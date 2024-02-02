@@ -1,8 +1,10 @@
 name: Docker Image CI
 
 on:
+  # Cambios nuevos en main
   push:
     branches: ['main']
+  # Cuando se abre un pull request a main
   pull_request:
     branches: ['main']
 
@@ -10,8 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Cada uno de los - es un paso
     steps:
-      # Cada uno de los - es un paso
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -25,5 +27,8 @@ jobs:
         # Cada | es un salto de linea
         run: echo "Iniciando login" docker login -u $DOCKER_USER -p $DOCKER_PASSWORD echo "Fin del login"
 
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Build Docker image
+        run: docker build -t oskar823/docker-graphql:0.0.2 .
+
+      - name: Push Docker image
+        run: docker push oskar823/docker-graphql:0.0.2 .

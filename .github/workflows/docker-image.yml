@@ -31,4 +31,4 @@ jobs:
         run: docker build -t oskar823/docker-graphql:0.0.2 .
 
       - name: Push Docker image
-        run: docker push oskar823/docker-graphql:0.0.2 .
+        run: docker push oskar823/docker-graphql:0.0.2

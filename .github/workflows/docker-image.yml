@@ -44,4 +44,4 @@ jobs:
       - name: Push Docker image
         env:
           NEW_VERSION: ${{ steps.version.outputs.version }}
-        run: docker push oskar823/docker-graphql:$NEW_VERSION && docker push oskar823/docker-graphql:latest
+        run: docker push oskar823/docker-graphql:$NEW_VERSION && docker push oskar823/docker-graphql
